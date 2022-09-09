@@ -193,6 +193,7 @@
         document.getElementById("studentid").value = id;
         var token = JSON.parse(localStorage.getItem('user'));
         token = token.auth_token;
+        var courseData
         axios({
             method: 'get',
             url: 'http://localhost:3000/courseget',
@@ -204,16 +205,14 @@
             .then(function (response) {
                 //   console.log(response);
                 var responsedata = response.data;
+                courseData=response.data
                 console.log(response.data);
                 var div = document.getElementById('Id');
                 for (var i = 0; i < response.data.length; i++) {
                     div.innerHTML += ` 
     
-          <input class="courseCheck" type="checkbox" name=course_id onclick="selectCourse(${response.data[i].id})" value=${response.data[i].id}>
+          <input  class="area" type="checkbox" name=course_id value=${response.data[i].id}>
           <label for="vehicle1"><b>${response.data[i].coursename}<b></label><br>`
-
-                    //   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    //   <label for="vehicle1"> I have a bike</label><br>
                 }
             })
             .then(data => {
@@ -223,14 +222,21 @@
             });
 
 
+
         const form = document.getElementById('form');
-        function selectCourse(id) {
-            console.log(id)
-            selectedCourses.push(id)
-        }
+        
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            const a = [];
+            const selectedCourses= [];
+            var a=document.querySelectorAll('.area');
+            const arr = Array.prototype.slice.call(a)
+            for(i=0;i<arr.length;i++){
+                if(arr[i].checked==true){
+                    selectedCourses.push(arr[i].value)
+                }
+            }
+            console.log(selectedCourses);
+          
 
             const formData = new FormData(form);
             formData.course_id = selectedCourses
@@ -268,6 +274,7 @@
 
     </script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="index.js"></script>
 </body>
 
 

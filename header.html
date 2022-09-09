@@ -110,6 +110,7 @@
         }
         var token = JSON.parse(localStorage.getItem('user'));
         if (token) {
+            
             document.getElementById("studentgrid").innerHTML = `<i class="fa fa-home fa-fw mr-1"></i><big>StudentGrid</big>`
             document.getElementById("coursegrid").innerHTML = `<i class="fa fa-th-list fa-fw mr-1"></i><big>CourseGrid</big>`
             document.getElementById("courseregister").innerHTML = `<i class="fa fa-info-circle fa-fw mr-1"></i><big>CourseRegister</big>`
@@ -123,8 +124,7 @@
             document.getElementById("studentregister").innerHTML = ""
             document.getElementById("register").innerHTML = `<i class="fa fa-info-circle fa-fw mr-1"></i><big>Register</big>`
             document.getElementById("login").innerHTML = `<i class="fa fa-info-circle fa-fw mr-1"></i><big>Login</big>`
-
-
+            
         }
 
     </script>

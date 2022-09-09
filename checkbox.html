@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id = 'testName0' type = 'checkbox' name = 'check[0]' value = '1' checked>
+<input id='testNameHidden0'  type='hidden' value='0' name='check[0]'>
+
+<input id = 'testName1' type = 'checkbox' name='check[1]' value = '1' unchekced>
+<input id='testNameHidden1'  type='hidden' value='0' name='check[1]'>
+
+<input type = 'submit' value = 'Save Changes'>
+>
+<script>
+if(document.getElementById('testName0').checked){
+
+  consdocument.getElementById('testNameHidden0').disabled = true;
+}
+</script>
+
+<script>
+if(document.getElementById('testName1').checked){
+  document.getElementById('testNameHidden1').disabled = true;
+}
+</script>
+
+</body>
+</html>

@@ -149,7 +149,7 @@
     </div>
 
     <div class="ex1" class="container">
-        <form id="form" enctype="multipart/form-data">
+        <form id="form"  autocomplete="on" enctype="multipart/form-data">
 
 
 
@@ -204,6 +204,15 @@
                 <div class="clr"></div>
             </div>
 
+            	
+            <!-- -Image- -->
+    		<div class="uploadImage" >
+				<label for="image" > <b>SELECT IMAGE:</b> </label>
+	           <input  type="file" name="image" >
+					
+		    </div>
+			<!--Image----->
+
 
             <div class="box" style="background: #2d3e3f;text-align:center;">
                 <input type="Submit" name="Submit" class="submit" value="Register" style="text-align:center;">
@@ -220,6 +229,7 @@
             e.preventDefault();
             const formData = new FormData(form);
             const data = Object.fromEntries(formData)
+            console.log(data);
             const payload = new URLSearchParams(formData);
             var token = JSON.parse(localStorage.getItem('user'));
             token = token.auth_token;
@@ -229,7 +239,8 @@
                 url: `http://localhost:3000/studentpost`,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': `multipart/form-data`
                 },
                 data: data
             })
@@ -250,6 +261,7 @@
         })
     </script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="index.js"></script>
 </body>
 
 
